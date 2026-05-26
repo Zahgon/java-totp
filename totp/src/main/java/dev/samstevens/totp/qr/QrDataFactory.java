@@ -5,7 +5,9 @@ import dev.samstevens.totp.code.HashingAlgorithm;
 public class QrDataFactory {
 
     private HashingAlgorithm defaultAlgorithm;
+
     private int defaultDigits;
+
     private int defaultTimePeriod;
 
     public QrDataFactory(HashingAlgorithm defaultAlgorithm, int defaultDigits, int defaultTimePeriod) {
@@ -15,9 +17,6 @@ public class QrDataFactory {
     }
 
     public QrData.Builder newBuilder() {
-        return new QrData.Builder()
-            .algorithm(defaultAlgorithm)
-            .digits(defaultDigits)
-            .period(defaultTimePeriod);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

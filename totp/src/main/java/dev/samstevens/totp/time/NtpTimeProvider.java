@@ -9,6 +9,7 @@ import java.net.UnknownHostException;
 public class NtpTimeProvider implements TimeProvider {
 
     private final NTPUDPClient client;
+
     private final InetAddress ntpHost;
 
     public NtpTimeProvider(String ntpHostname) throws UnknownHostException {
@@ -29,7 +30,6 @@ public class NtpTimeProvider implements TimeProvider {
     private NtpTimeProvider(String ntpHostname, int timeout, String dependentClass) throws UnknownHostException {
         // Check the optional commons-net dependency is on the classpath
         checkHasDependency(dependentClass);
-
         client = new NTPUDPClient();
         client.setDefaultTimeout(timeout);
         ntpHost = InetAddress.getByName(ntpHostname);
@@ -37,19 +37,7 @@ public class NtpTimeProvider implements TimeProvider {
 
     @Override
     public long getTime() throws TimeProviderException {
-        TimeInfo timeInfo;
-        try {
-            timeInfo = client.getTime(ntpHost);
-            timeInfo.computeDetails();
-        } catch (Exception e) {
-            throw new TimeProviderException("Failed to provide time from NTP server. See nested exception.", e);
-        }
-
-        if (timeInfo.getOffset() == null) {
-            throw new TimeProviderException("Failed to calculate NTP offset");
-        }
-
-        return (System.currentTimeMillis() + timeInfo.getOffset()) / 1000;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void checkHasDependency(String dependentClass) {

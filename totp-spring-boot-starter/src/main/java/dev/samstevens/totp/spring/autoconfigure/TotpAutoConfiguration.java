@@ -32,54 +32,49 @@ public class TotpAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public SecretGenerator secretGenerator() {
-        int length = props.getSecret().getLength();
-        return new DefaultSecretGenerator(length);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public TimeProvider timeProvider() {
-        return new SystemTimeProvider();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public HashingAlgorithm hashingAlgorithm() {
-        return HashingAlgorithm.SHA1;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public QrDataFactory qrDataFactory(HashingAlgorithm hashingAlgorithm) {
-        return new QrDataFactory(hashingAlgorithm, getCodeLength(), getTimePeriod());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public QrGenerator qrGenerator() {
-        return new ZxingPngQrGenerator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public CodeGenerator codeGenerator(HashingAlgorithm algorithm) {
-        return new DefaultCodeGenerator(algorithm, getCodeLength());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public CodeVerifier codeVerifier(CodeGenerator codeGenerator, TimeProvider timeProvider) {
-        DefaultCodeVerifier verifier = new DefaultCodeVerifier(codeGenerator, timeProvider);
-        verifier.setTimePeriod(getTimePeriod());
-        verifier.setAllowedTimePeriodDiscrepancy(props.getTime().getDiscrepancy());
-
-        return verifier;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Bean
     @ConditionalOnMissingBean
     public RecoveryCodeGenerator recoveryCodeGenerator() {
-        return new RecoveryCodeGenerator();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private int getCodeLength() {

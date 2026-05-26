@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 public class ZxingPngQrGenerator implements QrGenerator {
 
     private final Writer writer;
+
     private int imageSize = 350;
 
     public ZxingPngQrGenerator() {
@@ -22,27 +23,19 @@ public class ZxingPngQrGenerator implements QrGenerator {
     }
 
     public void setImageSize(int imageSize) {
-        this.imageSize = imageSize;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getImageSize() {
-        return imageSize;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getImageMimeType() {
-        return "image/png";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public byte[] generate(QrData data) throws QrGenerationException {
-        try {
-            BitMatrix bitMatrix = writer.encode(data.getUri(), BarcodeFormat.QR_CODE, imageSize, imageSize);
-            ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
-            MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
-
-            return pngOutputStream.toByteArray();
-        } catch (Exception e) {
-            throw new QrGenerationException("Failed to generate QR code. See nested exception.", e);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

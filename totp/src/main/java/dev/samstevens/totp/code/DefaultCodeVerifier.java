@@ -6,8 +6,11 @@ import dev.samstevens.totp.time.TimeProvider;
 public class DefaultCodeVerifier implements CodeVerifier {
 
     private final CodeGenerator codeGenerator;
+
     private final TimeProvider timeProvider;
+
     private int timePeriod = 30;
+
     private int allowedTimePeriodDiscrepancy = 1;
 
     public DefaultCodeVerifier(CodeGenerator codeGenerator, TimeProvider timeProvider) {
@@ -16,27 +19,16 @@ public class DefaultCodeVerifier implements CodeVerifier {
     }
 
     public void setTimePeriod(int timePeriod) {
-        this.timePeriod = timePeriod;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void setAllowedTimePeriodDiscrepancy(int allowedTimePeriodDiscrepancy) {
-        this.allowedTimePeriodDiscrepancy = allowedTimePeriodDiscrepancy;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean isValidCode(String secret, String code) {
-        // Get the current number of seconds since the epoch and
-        // calculate the number of time periods passed.
-        long currentBucket = Math.floorDiv(timeProvider.getTime(), timePeriod);
-
-        // Calculate and compare the codes for all the "valid" time periods,
-        // even if we get an early match, to avoid timing attacks
-        boolean success = false;
-        for (int i = -allowedTimePeriodDiscrepancy; i <= allowedTimePeriodDiscrepancy; i++) {
-            success = checkCode(secret, currentBucket + i, code) || success;
-        }
-
-        return success;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -57,16 +49,13 @@ public class DefaultCodeVerifier implements CodeVerifier {
     private boolean timeSafeStringComparison(String a, String b) {
         byte[] aBytes = a.getBytes();
         byte[] bBytes = b.getBytes();
-
         if (aBytes.length != bBytes.length) {
             return false;
         }
-
         int result = 0;
         for (int i = 0; i < aBytes.length; i++) {
             result |= aBytes[i] ^ bBytes[i];
         }
-
         return result == 0;
     }
 }

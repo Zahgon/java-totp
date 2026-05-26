@@ -7,7 +7,9 @@ import java.security.SecureRandom;
 public class DefaultSecretGenerator implements SecretGenerator {
 
     private final SecureRandom randomBytes = new SecureRandom();
+
     private final static Base32 encoder = new Base32();
+
     private final int numCharacters;
 
     public DefaultSecretGenerator() {
@@ -23,14 +25,13 @@ public class DefaultSecretGenerator implements SecretGenerator {
 
     @Override
     public String generate() {
-        return new String(encoder.encode(getRandomBytes()));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private byte[] getRandomBytes() {
         // 5 bits per char in base32
         byte[] bytes = new byte[(numCharacters * 5) / 8];
         randomBytes.nextBytes(bytes);
-
         return bytes;
     }
 }

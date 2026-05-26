@@ -3,6 +3,7 @@ package dev.samstevens.totp.util;
 import org.apache.commons.codec.binary.Base64;
 
 public class Utils {
+
     private static Base64 base64Codec = new Base64();
 
     // Class not meant to be instantiated
@@ -19,8 +20,6 @@ public class Utils {
      * @return The data URI string representing the image.
      */
     public static String getDataUriForImage(byte[] data, String mimeType) {
-        String encodedData = new String(base64Codec.encode(data));
-
-        return String.format("data:%s;base64,%s", mimeType, encodedData);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -1,7 +1,6 @@
 package dev.samstevens.totp.qr;
 
 import dev.samstevens.totp.code.HashingAlgorithm;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -10,11 +9,17 @@ import java.nio.charset.StandardCharsets;
 public class QrData {
 
     private final String type;
+
     private final String label;
+
     private final String secret;
+
     private final String issuer;
+
     private final String algorithm;
+
     private final int digits;
+
     private final int period;
 
     /**
@@ -31,31 +36,31 @@ public class QrData {
     }
 
     public String getType() {
-        return type;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getLabel() {
-        return label;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getSecret() {
-        return secret;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getIssuer() {
-        return issuer;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public String getAlgorithm() {
-        return algorithm;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getDigits() {
-        return digits;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getPeriod() {
-        return period;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,22 +68,14 @@ public class QrData {
      * https://github.com/google/google-authenticator/wiki/Key-Uri-Format
      */
     public String getUri() {
-        return "otpauth://" +
-                uriEncode(type) + "/" +
-                uriEncode(label) + "?" +
-                "secret=" + uriEncode(secret) +
-                "&issuer=" + uriEncode(issuer) +
-                "&algorithm=" + uriEncode(algorithm) +
-                "&digits=" + digits +
-                "&period=" + period;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    private String uriEncode(String text)  {
+    private String uriEncode(String text) {
         // Null check
         if (text == null) {
             return "";
         }
-
         try {
             return URLEncoder.encode(text, StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
         } catch (UnsupportedEncodingException e) {
@@ -88,45 +85,45 @@ public class QrData {
     }
 
     public static class Builder {
+
         private String label;
+
         private String secret;
+
         private String issuer;
+
         private HashingAlgorithm algorithm = HashingAlgorithm.SHA1;
+
         private int digits = 6;
+
         private int period = 30;
 
         public Builder label(String label) {
-            this.label = label;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public Builder secret(String secret) {
-            this.secret = secret;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public Builder issuer(String issuer) {
-            this.issuer = issuer;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public Builder algorithm(HashingAlgorithm algorithm) {
-            this.algorithm = algorithm;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public Builder digits(int digits) {
-            this.digits = digits;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public Builder period(int period) {
-            this.period = period;
-            return this;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public QrData build() {
-            return new QrData("totp", label, secret, issuer, algorithm.getFriendlyName(), digits, period);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }
